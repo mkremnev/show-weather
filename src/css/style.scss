@@ -1,0 +1,36 @@
+@import '~bootstrap';
+
+@font-face {
+  font-family: 'Gilroy Heavy';
+  src: url('../fonts/gilroy-heavy.ttf') format('ttf');
+}
+
+* {
+  font-family: 'Gilroy Heavy';
+}
+
+html {
+  font-size: 16px;
+}
+
+#app {
+  background: linear-gradient(
+    169.12deg,
+    #640caa -12.13%,
+    rgba(0, 9, 234, 0.79) 156.36%
+  );
+  height: 100vh;
+
+  .city-title {
+    color: #ffffff;
+    text-transform: uppercase;
+  }
+
+  .btn-city {
+    color: #ffffff;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+}

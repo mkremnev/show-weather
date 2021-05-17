@@ -7,7 +7,9 @@
     "lint:check": "eslint --color --cache .",
     "format:check": "prettier --check .",
     "lint:fix": "prettier --write . && eslint --color --cache --fix .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "start": "webpack serve  --host 0.0.0.0 --mode development --env mode=development",
+    "build": "webpack --mode=production --env mode=producton --progress"
   },
   "repository": {
     "type": "git",

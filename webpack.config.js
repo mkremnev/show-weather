@@ -40,7 +40,6 @@ module.exports = (env) => {
       alias: {
         '@': path.resolve(__dirname, 'src/'),
         css: path.resolve(__dirname, 'src/css/'),
-        html: path.resolve(__dirname, 'public/'),
       },
     },
     module: {
@@ -76,7 +75,7 @@ module.exports = (env) => {
           loader: 'url-loader',
           options: {
             limit: 8192,
-            publicPath: 'img',
+            publicPath: 'assets/img',
           },
         },
       ],

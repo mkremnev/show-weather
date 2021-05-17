@@ -1,0 +1,36 @@
+{
+  "name": "show-weather",
+  "version": "1.0.0",
+  "description": "Otus, homeworks, js, weather",
+  "main": "index.js",
+  "scripts": {
+    "lint:check": "eslint --color --cache .",
+    "format:check": "prettier --check .",
+    "lint:fix": "prettier --write . && eslint --color --cache --fix .",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mkremnev/show-weather.git"
+  },
+  "author": "Maxim Kremnev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mkremnev/show-weather/issues"
+  },
+  "homepage": "https://github.com/mkremnev/show-weather#readme",
+  "devDependencies": {
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.2",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.0"
+  },
+  "lint-staged": {
+    "*.{js,html,scss,yml}": "prettier --write .",
+    "*.js": "eslint --cache --fix"
+  }
+}

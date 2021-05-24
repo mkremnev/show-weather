@@ -19,18 +19,107 @@ html {
     #640caa -12.13%,
     rgba(0, 9, 234, 0.79) 156.36%
   );
-  height: 100vh;
+  padding: 0 0 0.5rem 0;
+  height: auto;
+  min-height: 100vh;
+  .city-navigation {
+    margin-bottom: 5rem;
+    border-bottom: 1px solid #2f2f2f;
+    padding: 1rem 0;
 
-  .city-title {
-    color: #ffffff;
-    text-transform: uppercase;
+    .icon-city {
+      margin-left: 2rem;
+    }
+
+    .city-title {
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    .btn-city {
+      color: #ffffff;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      outline: none;
+    }
   }
 
-  .btn-city {
-    color: #ffffff;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    outline: none;
+  .city-information {
+    color: white;
+
+    .city-information-precipValue div:first-child {
+      text-transform: capitalize;
+      font-size: 3rem;
+    }
+
+    .city-information-precipValue div:nth-child(2) {
+      font-size: 2rem;
+
+      &:first-letter {
+        text-transform: uppercase;
+      }
+    }
+
+    .city-information-tempValue {
+      position: relative;
+
+      .temp-value {
+        font-size: 18rem;
+        font-weight: bold;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #ffffff;
+        background: -webkit-linear-gradient(
+          134.54deg,
+          rgba(255, 255, 255, 0.15) 18.17%,
+          rgba(255, 255, 255, 0.15) 78.31%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .temp-value-degree,
+      .temp-value-degree sup {
+        font-weight: bold;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #ffffff;
+
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .temp-value-degree {
+        font-size: 4rem;
+        position: absolute;
+        top: 3.4rem;
+        right: 0;
+      }
+      .temp-value-degree sup {
+        font-size: 1.6rem;
+        position: absolute;
+        top: 1.875rem;
+        left: -0.675rem;
+      }
+    }
+  }
+
+  .city-weather-daily {
+    h3 {
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+    }
+    .city-weather-daily-wrapper {
+      .city-weather-daily-item {
+        color: #ffffff;
+        margin-right: 1rem;
+        padding: 0.5rem 0;
+
+        background: linear-gradient(
+          157deg,
+          rgba(255, 255, 255, 0.082) 9.88%,
+          rgba(255, 255, 255, 0.024) 86.28%
+        );
+        border-radius: 30px;
+        box-shadow: -1px -1px 10px -2px #fff;
+      }
+    }
   }
 }

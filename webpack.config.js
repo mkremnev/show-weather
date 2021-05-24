@@ -81,6 +81,9 @@ module.exports = (env) => {
       ],
     },
     plugins,
+    experiments: {
+      topLevelAwait: true,
+    },
     devServer: {
       contentBase: path.resolve(__dirname, './src'),
     },

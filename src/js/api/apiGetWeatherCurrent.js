@@ -1,6 +1,6 @@
 export async function getWeatherCurrent(city) {
   try {
-    let response = await fetch(
+    const response = await fetch(
       `${process.env.URL}weather?q=${city}&appid=${process.env.KEY}&units=metric`
     );
     return response.json();

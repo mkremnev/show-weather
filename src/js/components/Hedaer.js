@@ -83,7 +83,7 @@ export function Header(el, city, cities) {
   const modal = el.querySelector('.modal-city-container');
   const btnClose = modal.querySelector('.btn-close');
 
-  //logic
+  // logic
   const changeShowModal = () => {
     modal.classList.toggle('show');
   };

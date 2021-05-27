@@ -12,10 +12,27 @@ module.exports = {
   globals: {
     ymaps: true,
   },
-  plugins: ['prettier'],
+  plugins: ['eslint-plugin-import', 'prettier'],
   rules: {
     'prettier/prettier': 'error',
     'arrow-body-style': 'off',
     'prefer-arrow-callback': 'off',
+    'import/prefer-default-export': 'off',
+    'array-callback-return': 'off',
+    'no-param-reassign': 'off',
+    'no-use-before-define': 'off',
+    'no-unused-expressions': 'off',
+    'no-console': 'off',
+    'consistent-return': 'off',
+  },
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@', './src'],
+          ['css', './src/css'],
+        ],
+      },
+    },
   },
 };

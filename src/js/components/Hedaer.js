@@ -89,11 +89,11 @@ export function Header(el, city, cities) {
   };
 
   cities.length
-    ? cities.map((city) => {
+    ? cities.map((cityName) => {
         submenu.insertAdjacentHTML(
           'afterbegin',
           `
-    <button class="btn btn-danger btn-cities">${city}</button>
+    <button class="btn btn-danger btn-cities">${cityName}</button>
   `
         );
       })

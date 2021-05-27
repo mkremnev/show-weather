@@ -1,4 +1,4 @@
-export async function apiYandexMap(lat, lon) {
+export async function apiYandexMap() {
   return new Promise((resolve, reject) => {
     const scriptElement = document.createElement('script');
     scriptElement.onload = resolve;

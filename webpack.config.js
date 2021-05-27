@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = (env) => {
   const devMode = env.mode === 'development';
@@ -22,6 +23,8 @@ module.exports = (env) => {
       template: './src/index.html',
     })
   );
+
+  plugins.push(new Dotenv());
 
   plugins.push(
     new CopyWebpackPlugin({
@@ -45,7 +48,7 @@ module.exports = (env) => {
     module: {
       rules: [
         {
-          test: /\.m?js$/,
+          test: /\.js$/,
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',

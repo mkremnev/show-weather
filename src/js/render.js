@@ -4,8 +4,8 @@ import { WeatherInformation } from '@/js/components/WeatherInformation';
 
 export function render(el, data) {
   el.innerHTML = '';
-  const { name, current, daily } = data;
-  Header(el, name);
+  const { name, current, daily, history } = data;
+  Header(el, name, history);
   CityInformation(el, current);
   WeatherInformation(el, daily);
 }

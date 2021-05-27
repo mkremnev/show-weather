@@ -2,7 +2,7 @@ import { getWeatherCurrent } from '@/js/api/apiGetWeatherCurrent';
 import { getWeatherDaily } from '@/js/api/apiGetWeatherDaily';
 import { apiGetGeoLocation } from '@/js/api/apiGetGeoLocation';
 import { render } from '@/js/render';
-import { apiSetHistory } from '@/js/api/apiLocalStorage';
+import { apiGetHistory, apiSetHistory } from '@/js/api/apiLocalStorage';
 
 const cityData = {
   name: '',
@@ -19,7 +19,6 @@ const cityData = {
   },
 
   async setName(name) {
-    console.log(name);
     if (name !== undefined) {
       this.name = name;
     } else {
@@ -31,30 +30,51 @@ const cityData = {
   setHistory(city) {
     this.history = apiSetHistory(city);
   },
+
+  getHistory() {
+    this.history = apiGetHistory();
+  },
 };
 
-export async function app() {
-  const app = document.querySelector('#app');
-  const container = document.createElement('div');
-  container.classList.add('container');
+export async function init() {
+  const container = document.querySelector('#app').querySelector('.container');
 
   await cityData.setName();
   await cityData.setCurrent();
   await cityData.setDaily();
+  cityData.getHistory();
 
   render(container, cityData);
-  app.append(container);
+  subscribers();
+}
 
-  const form = app.querySelector('form');
-  const input = app.querySelector('input');
+export function subscribers() {
+  const container = document.querySelector('#app').querySelector('.container');
+  const form = container.querySelector('form');
+  const input = container.querySelector('input');
+  const buttons = container.querySelectorAll('.cities-submenu button');
+
   form.addEventListener('submit', async (ev) => {
     ev.preventDefault();
     const nameCity = input.value;
     await cityData.setName(nameCity);
     await cityData.setCurrent();
     await cityData.setDaily();
+    cityData.setHistory(nameCity);
     render(container, cityData);
+    await subscribers();
+  });
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', async (ev) => {
+      const nameCity = ev.target.innerText;
+      await cityData.setName(nameCity);
+      await cityData.setCurrent();
+      await cityData.setDaily();
+      render(container, cityData);
+      await subscribers();
+    });
   });
 }
 
-app();
+init();

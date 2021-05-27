@@ -23,12 +23,14 @@
   "homepage": "https://github.com/mkremnev/show-weather#readme",
   "devDependencies": {
     "@babel/core": "^7.14.2",
+    "@babel/plugin-transform-runtime": "^7.14.3",
     "@babel/preset-env": "^7.14.2",
     "autoprefixer": "^10.2.5",
     "babel-loader": "^8.2.2",
     "bootstrap": "^5.0.1",
     "copy-webpack-plugin": "^8.1.1",
     "css-loader": "^5.2.4",
+    "dotenv-webpack": "^7.0.2",
     "eslint": "^7.26.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.3.0",
@@ -52,5 +54,8 @@
   "lint-staged": {
     "*.{js,html,scss,yml}": "prettier --write .",
     "*.js": "eslint --cache --fix"
-  }
+  },
+  "browserslist": [
+    "last 1 Chrome version"
+  ]
 }

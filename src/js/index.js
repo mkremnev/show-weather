@@ -1,17 +1,60 @@
-import { Header } from '@/js/components/Hedaer';
-import { CityInformation } from '@/js/components/CityInformation';
-import { WeatherInformation } from '@/js/components/WeatherInformation';
+import { getWeatherCurrent } from '@/js/api/apiGetWeatherCurrent';
+import { getWeatherDaily } from '@/js/api/apiGetWeatherDaily';
+import { apiGetGeoLocation } from '@/js/api/apiGetGeoLocation';
+import { render } from '@/js/render';
+import { apiSetHistory } from '@/js/api/apiLocalStorage';
 
-let dataCurrent = await fetch(
-  'http://api.openweathermap.org/data/2.5/weather?q=Moscow&appid=27630985fa06ce7c1174dbe167b6eedd'
-).then((res) => res.json());
+const cityData = {
+  name: '',
+  current: {},
+  daily: {},
+  history: [],
 
-console.log(dataCurrent);
-export function init() {
-  const el = document.querySelector('#app').querySelector('.container');
-  Header(el);
-  CityInformation(el);
-  WeatherInformation(el);
+  async setCurrent() {
+    this.current = await getWeatherCurrent(this.name);
+  },
+
+  async setDaily() {
+    this.daily = await getWeatherDaily(this.current);
+  },
+
+  async setName(name) {
+    console.log(name);
+    if (name !== undefined) {
+      this.name = name;
+    } else {
+      this.name =
+        (await apiGetGeoLocation().then((res) => res.city)) || 'Moscow';
+    }
+  },
+
+  setHistory(city) {
+    this.history = apiSetHistory(city);
+  },
+};
+
+export async function app() {
+  const app = document.querySelector('#app');
+  const container = document.createElement('div');
+  container.classList.add('container');
+
+  await cityData.setName();
+  await cityData.setCurrent();
+  await cityData.setDaily();
+
+  render(container, cityData);
+  app.append(container);
+
+  const form = app.querySelector('form');
+  const input = app.querySelector('input');
+  form.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    const nameCity = input.value;
+    await cityData.setName(nameCity);
+    await cityData.setCurrent();
+    await cityData.setDaily();
+    render(container, cityData);
+  });
 }
 
-init();
+app();

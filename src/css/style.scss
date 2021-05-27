@@ -143,3 +143,12 @@ html {
     }
   }
 }
+
+#map {
+  width: 100%;
+  max-width: 1320px;
+  height: 25rem;
+  margin: 1rem auto 0;
+  overflow: hidden;
+  border-radius: 0.25rem;
+}

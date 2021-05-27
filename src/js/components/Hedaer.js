@@ -1,4 +1,4 @@
-export function Header(el) {
+export function Header(el, city) {
   el.insertAdjacentHTML(
     'afterbegin',
     `
@@ -28,7 +28,7 @@ export function Header(el) {
               </g>
             </svg>
           </div>
-          <h1 class="city-title">Moscow</h1>
+          <h1 class="city-title">${city}</h1>
           <button type="button" class="btn-city">
             <svg
               width="70"
@@ -48,4 +48,26 @@ export function Header(el) {
         </header>
 `
   );
+
+  el.insertAdjacentHTML(
+    'beforeend',
+    `
+  <div class="modal-city-container">
+    <form class="d-flex flex-column justify-content-center p-4">
+    <label for="city">Введите название города</label>
+      <input class="city-input" name="city" type="text" />
+      <button type="submit">Найти</button>
+    </form>
+  </div>
+  `
+  );
+
+  const button = el.querySelector('.btn-city');
+  console.log(button);
+  const modal = el.querySelector('.modal-city-container');
+  const changeShowModal = () => {
+    modal.classList.toggle('show');
+  };
+
+  button.addEventListener('click', changeShowModal);
 }

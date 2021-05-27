@@ -29,8 +29,9 @@ html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: white;
     border-radius: 0.25rem;
+    min-width: 30rem;
+    z-index: 1000;
     &.show {
       display: block;
     }
@@ -40,6 +41,10 @@ html {
     margin-bottom: 5rem;
     border-bottom: 1px solid #2f2f2f;
     padding: 1rem 0;
+
+    .btn-cities::first-letter {
+      text-transform: uppercase;
+    }
 
     .icon-city {
       margin-left: 2rem;

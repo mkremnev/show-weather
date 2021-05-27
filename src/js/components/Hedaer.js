@@ -1,4 +1,4 @@
-export function Header(el, city) {
+export function Header(el, city, cities) {
   el.insertAdjacentHTML(
     'afterbegin',
     `
@@ -28,7 +28,10 @@ export function Header(el, city) {
               </g>
             </svg>
           </div>
-          <h1 class="city-title">${city}</h1>
+          <div class="title-wrapper">
+            <h1 class="city-title text-center">${city}</h1>
+            <div class="cities-submenu"></div>
+          </div>
           <button type="button" class="btn-city">
             <svg
               width="70"
@@ -53,21 +56,53 @@ export function Header(el, city) {
     'beforeend',
     `
   <div class="modal-city-container">
-    <form class="d-flex flex-column justify-content-center p-4">
-    <label for="city">Введите название города</label>
-      <input class="city-input" name="city" type="text" />
-      <button type="submit">Найти</button>
-    </form>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title">Show Weather</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="d-flex flex-column justify-content-center p-4 ">
+          <div class="mb-3">    
+            <label for="city" class="form-label">Введите название города</label>
+            <input class="city-input form-control" name="city" type="text" />
+          </div>
+          <button type="submit" class="btn btn-primary">Найти</button>
+        </form>
+      </div>
+    </div>
+  </div>
   </div>
   `
   );
 
+  // blocks
+  const submenu = el.querySelector('.cities-submenu');
   const button = el.querySelector('.btn-city');
-  console.log(button);
   const modal = el.querySelector('.modal-city-container');
+  const btnClose = modal.querySelector('.btn-close');
+  console.log(btnClose);
+
+  //logic
   const changeShowModal = () => {
     modal.classList.toggle('show');
   };
 
+  cities.length
+    ? cities.map((city) => {
+        submenu.insertAdjacentHTML(
+          'afterbegin',
+          `
+    <button class="btn btn-danger btn-cities">${city}</button>
+  `
+        );
+      })
+    : (submenu.innerText = 'Список пуст');
+
+  // subscribe
   button.addEventListener('click', changeShowModal);
+  btnClose.addEventListener('click', () => {
+    modal.classList.remove('show');
+  });
 }

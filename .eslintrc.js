@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
     node: true,
+    'jest/globals': true,
   },
   extends: ['airbnb-base', 'prettier'],
   parserOptions: {
@@ -12,7 +13,7 @@ module.exports = {
   globals: {
     ymaps: true,
   },
-  plugins: ['eslint-plugin-import', 'prettier'],
+  plugins: ['eslint-plugin-import', 'jest', 'prettier'],
   rules: {
     'prettier/prettier': 'error',
     'arrow-body-style': 'off',

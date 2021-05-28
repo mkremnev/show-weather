@@ -1,3 +1,7 @@
+export const changeShowModal = (el) => {
+  el.classList.toggle('show');
+};
+
 export function Header(el, city, cities) {
   el.insertAdjacentHTML(
     'afterbegin',
@@ -84,9 +88,6 @@ export function Header(el, city, cities) {
   const btnClose = modal.querySelector('.btn-close');
 
   // logic
-  const changeShowModal = () => {
-    modal.classList.toggle('show');
-  };
 
   cities.length
     ? cities.map((cityName) => {
@@ -100,7 +101,7 @@ export function Header(el, city, cities) {
     : (submenu.innerText = 'Список пуст');
 
   // subscribe
-  button.addEventListener('click', changeShowModal);
+  button.addEventListener('click', () => changeShowModal(modal));
   btnClose.addEventListener('click', () => {
     modal.classList.remove('show');
   });
